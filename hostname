@@ -1,0 +1,5 @@
+#!/bin/sh
+orig=/usr/bin/$(basename $0)
+[ -n "$SOURCE_DATE_EPOCH" ] || exec $orig "$@"
+[ "$*" != "" ] && [ "$*" != "-f" ] && exec $orig "$@"
+echo reproducible
