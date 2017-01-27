@@ -3,10 +3,10 @@
 [ "$*" = "" ] && exec $orig "$@"
 [ "$*" = "-a" ] && exec "$0" -s -n -r -v -m -p -i -o
 
-function add
+add()
 {
-    [ -z "$o" ] || o+=" "
-    o+="$1"
+    [ -z "$o" ] || o="$o "
+    o="$o$1"
 }
 
 o=""
