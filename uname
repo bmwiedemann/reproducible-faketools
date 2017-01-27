@@ -1,6 +1,5 @@
 #!/bin/sh
-orig=/usr/bin/$(basename $0)
-[ -n "$SOURCE_DATE_EPOCH" ] || exec $orig "$@"
+. $(dirname $0)/reproducible-faketools-lib
 [ "$*" = "" ] && exec $orig "$@"
 [ "$*" = "-a" ] && exec "$0" -s -n -r -v -m -p -i -o
 
@@ -13,13 +12,16 @@ function add
 o=""
 for arg in "$@" ; do
     case "$arg" in
-        -n) # nodename
+        -n)
+            faketoolnotice $arg nodename
             add "reproducible"
             ;;
-        -v) # kernel version
+        -v)
+            faketoolnotice $arg kernel version
             add "reproducible"
             ;;
         -r)
+            faketoolnotice $arg kernel release
             t=`$orig $arg|sed -e 's/^\([0-9][0-9]*\.[0-9][0-9]*\).*/\1-reproducible/'`
             add "$t"
             ;;

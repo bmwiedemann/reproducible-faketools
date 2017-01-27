@@ -1,6 +1,5 @@
 #!/bin/bash
-orig=/usr/bin/$(basename $0)
-[ -n "$SOURCE_DATE_EPOCH" ] || exec $orig "$@"
+. $(dirname $0)/reproducible-faketools-lib
 for arg in "$@" ; do
     if  [[ $arg =~ ^-d ]] ||\
 	[[ $arg =~ ^--date ]] ||\
@@ -10,4 +9,5 @@ for arg in "$@" ; do
         exec $orig "$@"
     fi
 done
+faketoolnotice
 exec $orig "$@" -d "@${SOURCE_DATE_EPOCH}"

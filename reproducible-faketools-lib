@@ -1,0 +1,8 @@
+# to be sourced by the scipts in this package
+orig=/usr/bin/$(basename $0)
+[ -n "$SOURCE_DATE_EPOCH" ] || exec $orig "$@"
+
+function faketoolnotice
+{
+    echo "notice: used reproducible-faketool $(basename $0) $@" >&2
+}

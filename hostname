@@ -1,5 +1,5 @@
 #!/bin/sh
-orig=/usr/bin/$(basename $0)
-[ -n "$SOURCE_DATE_EPOCH" ] || exec $orig "$@"
+. $(dirname $0)/reproducible-faketools-lib
 [ "$*" != "" ] && [ "$*" != "-f" ] && exec $orig "$@"
+faketoolnotice
 echo reproducible
