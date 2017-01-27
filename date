@@ -1,0 +1,13 @@
+#!/bin/bash
+orig=/usr/bin/$(basename $0)
+[ -n "$SOURCE_DATE_EPOCH" ] || exec $orig "$@"
+for arg in "$@" ; do
+    if  [[ $arg =~ ^-d ]] ||\
+	[[ $arg =~ ^--date ]] ||\
+	[[ $arg =~ ^-r ]] ||\
+	[[ $arg =~ ^--reference ]]
+        then
+        exec $orig "$@"
+    fi
+done
+exec $orig "$@" -d "@${SOURCE_DATE_EPOCH}"
