@@ -1,5 +1,5 @@
 #!/bin/bash
-. $(dirname $0)/reproducible-faketools-lib
+. $(dirname $0)/../lib/reproducible-faketools-lib
 for arg in "$@" ; do
     if  [[ $arg =~ ^-d ]] ||\
 	[[ $arg =~ ^--date ]] ||\

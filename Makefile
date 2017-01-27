@@ -1,6 +1,5 @@
 PREFIX:=/usr/local
-BINS=date hostname uname
 install:
-	install -d $(DESTDIR)$(PREFIX)/bin/
-	install -p -m 755 $(BINS) $(DESTDIR)$(PREFIX)/bin/
-	install -p -m 644 reproducible-faketools-lib $(DESTDIR)$(PREFIX)/bin/
+	install -d $(DESTDIR)$(PREFIX)/bin/ $(DESTDIR)$(PREFIX)/lib/
+	install -p -m 755 bin/* $(DESTDIR)$(PREFIX)/bin/
+	install -p -m 644 lib/reproducible-faketools-lib $(DESTDIR)$(PREFIX)/lib/
