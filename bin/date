@@ -10,4 +10,4 @@ for arg in "$@" ; do
     fi
 done
 faketoolnotice
-exec $orig "$@" -d "@${SOURCE_DATE_EPOCH}"
+LC_ALL=C exec $orig --utc -d "@${SOURCE_DATE_EPOCH}" "$@"
