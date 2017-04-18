@@ -3,7 +3,11 @@
 for arg in "$@" ; do
     if  [[ $arg =~ ^-d ]] ||\
 	[[ $arg =~ ^--date ]] ||\
+	[[ $arg =~ ^-f ]] ||\
+	[[ $arg =~ ^-uf ]] ||\
+	[[ $arg =~ ^--file ]] ||\
 	[[ $arg =~ ^-r ]] ||\
+	[[ $arg =~ ^-ur ]] ||\
 	[[ $arg =~ ^--reference ]]
         then
         exec $orig "$@"
