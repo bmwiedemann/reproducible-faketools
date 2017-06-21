@@ -2,6 +2,8 @@
 orig=/usr/bin/$(basename $0)
 [ -x "$orig" ] || orig=/bin/$(basename $0)
 [ -n "$SOURCE_DATE_EPOCH" ] || exec $orig "$@"
+export LC_ALL=C
+unset TZ
 
 faketoolnotice()
 {
