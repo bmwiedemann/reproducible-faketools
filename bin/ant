@@ -5,5 +5,5 @@ export ANT_ARGS
 $orig "$@"
 if [ -e /usr/bin/strip-nondeterminism ] ; then
     faketoolnotice
-    find '(' -name '*.zip' -o -name '*.jar' -o -name '*.mo' -o -name '*.html' -o -name '*.gz' -o -name '*.png' ')' -print0 | xargs --no-run-if-empty -0 /usr/bin/strip-nondeterminism --timestamp=${SOURCE_DATE_EPOCH:-1494270000} --clamp-timestamp
+    strip-all-nondeterminism || :
 fi
