@@ -109,6 +109,18 @@ by replacing it with a wrapper to 7z
 /usr/local/bin/zip
 /usr/local/bin/reproducible-zip.pl
 
+%package faketime
+Summary:  fake time via LD_PRELOAD
+RemovePathPostfixes: -faketime
+Requires: libfaketime
+Requires: reproducible-faketools
+%description faketime
+a script to enhance the reproducibility of the output
+by replacing time(2) and fstat(2) library calls to return our notion of time
+%files faketime
+%defattr(-, root, root, 0755)
+/usr/local/bin/rpmbuild-faketime
+
 %files
 %defattr(-, root, root, 0755)
 %license LICENSE.md
