@@ -1,0 +1,2 @@
+#!/bin/sh
+exec strace -e open,rename,clone,fork,execve -s 400 -f /usr/bin/rpmbuild "$@"

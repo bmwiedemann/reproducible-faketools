@@ -132,6 +132,18 @@ by replacing time(2) and fstat(2) library calls to return our notion of time
 %defattr(-, root, root, 0755)
 /usr/local/bin/rpmbuild-faketime
 
+%package strace
+Summary:  run build with strace
+RemovePathPostfixes: -strace
+Requires: strace
+Conflicts: reproducible-faketools-faketime
+%description strace
+a script to facilitate the debugging of reproducibility issues
+by running rpmbuild with strace to find how files are created
+%files strace
+%defattr(-, root, root, 0755)
+/usr/local/bin/rpmbuild-strace
+
 %files
 %defattr(-, root, root, 0755)
 %license LICENSE.md
