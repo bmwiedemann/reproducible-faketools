@@ -17,7 +17,7 @@
 
 
 Name:           reproducible-faketools
-Version:        0.3.8
+Version:        0.3.9
 Release:        0
 Summary:        Fake system tools for reproducible builds
 License:        MIT
@@ -72,6 +72,17 @@ a script to enhance the reproducibility of the output of ar
 %defattr(-, root, root, 0755)
 /usr/local/bin/ar
 /usr/local/bin/strip
+
+%package tar
+Summary:  replacement tar
+Requires: reproducible-faketools
+Requires: tar >= 1.28
+%description tar
+a script to enhance the reproducibility of the output of tar
+by adding --sort and --mtime options
+%files tar
+%defattr(-, root, root, 0755)
+/usr/local/bin/tar
 
 %package ant
 Summary:  replacement ant

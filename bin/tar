@@ -1,0 +1,11 @@
+#!/bin/sh
+. $(dirname $0)/../lib/reproducible-faketools-lib
+faketoolnotice
+action=$1
+rbopts="--sort=name --clamp-mtime --mtime @$SOURCE_DATE_EPOCH --format=gnu"
+if [[ $action =~ ^- ]] ; then
+    exec $orig $rbopts "$@"
+else
+    shift
+    exec $orig $rbopts "-$action" "$@"
+fi
