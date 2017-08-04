@@ -82,6 +82,7 @@ a script to enhance the reproducibility of the output of tar
 by adding --sort and --mtime options
 %files tar
 %defattr(-, root, root, 0755)
+/usr/local/bin/gzip
 /usr/local/bin/tar
 
 %package ant
