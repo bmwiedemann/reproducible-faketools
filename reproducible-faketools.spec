@@ -108,6 +108,21 @@ WARNING: do not use outside OBS or osc build --vm-type=kvm
 chmod 4755 /usr/bin/fusermount || :
 mknod /dev/fuse c 10 229 || :
 
+%package aslr
+Summary:  disable address space layout randomization
+Requires(post): procps
+%description aslr
+disable address space layout randomization
+to test if programs that use memory pointers like edje_cc
+work more reproducibly under these conditions
+%files aslr
+%defattr(-, root, root, 0644)
+/etc/sysctl.d/01-disable-aslr.conf
+%post aslr
+sysctl --system
+%postun aslr
+sysctl -w kernel.randomize_va_space=2
+
 %package zip
 Summary:  replacement zip
 Requires: p7zip
