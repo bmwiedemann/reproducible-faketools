@@ -108,6 +108,16 @@ WARNING: do not use outside OBS or osc build --vm-type=kvm
 chmod 4755 /usr/bin/fusermount || :
 mknod /dev/fuse c 10 229 || :
 
+%package pid
+Summary:  use fixed pid
+Requires: reproducible-faketools
+%description pid
+a script to wrap su to start a build with a fixed process id
+to enhance the reproducibility of some packages
+%files pid
+%defattr(-, root, root, 0755)
+/usr/local/bin/su
+
 %package aslr
 Summary:  disable address space layout randomization
 Requires(post): procps

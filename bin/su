@@ -1,0 +1,7 @@
+#!/bin/sh
+. $(dirname $0)/../lib/reproducible-faketools-lib
+if [ "$2" = "/.build.command" ] ; then
+    faketoolnotice "fixed pid"
+    echo 10000 > /proc/sys/kernel/ns_last_pid
+fi
+exec $orig "$@"
