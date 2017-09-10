@@ -7,5 +7,6 @@ unset TZ
 
 faketoolnotice()
 {
+    [ -n "$RBFTVERBOSE" ] || return 0
     echo "notice: used reproducible-faketool $(basename $0) $@" >&2
 }
