@@ -38,6 +38,7 @@ is set but just redirect to the normal version otherwise.
 %setup
 
 %build
+echo dummy file because an rpm cannot be empty > README.random
 
 %install
 %makeinstall
@@ -132,6 +133,22 @@ work more reproducibly under these conditions
 sysctl --system
 %postun aslr
 sysctl -w kernel.randomize_va_space=2
+
+%package random
+Summary:  reduce sources of explicit randomness
+%description random
+reduce sources of explicit randomness
+by replacing /dev/random and urandom
+%files random
+%doc README.random
+%post random
+rm -f /dev/{,u}random
+mknod /dev/random c 1 5
+mknod /dev/urandom c 1 5
+%postun random
+rm -f /dev/{,u}random
+mknod /dev/random c 1 8
+mknod /dev/urandom c 1 9
 
 %package zip
 Summary:  replacement zip
