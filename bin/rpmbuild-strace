@@ -1,2 +1,2 @@
 #!/bin/sh
-exec strace -e open,openat,rename,clone,fork,execve -s 400 -f /usr/bin/rpmbuild "$@"
+exec strace -e open,openat,rename,uname,clone,fork,execve -s 400 -f /usr/bin/rpmbuild "$@"
