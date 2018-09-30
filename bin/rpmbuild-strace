@@ -1,2 +1,5 @@
 #!/bin/sh
-exec strace -q -e open,openat,rename,renameat,link,linkat,uname,clone,fork,vfork,execve -s 400 -f /usr/bin/rpmbuild "$@"
+exec strace -q -s 400 -f \
+    -e open,openat,rename,renameat,link,linkat,chdir,fchdir,execve\
+,clone,fork,vfork,uname \
+    /usr/bin/rpmbuild "$@"
