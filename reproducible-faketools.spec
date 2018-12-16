@@ -17,7 +17,7 @@
 
 
 Name:           reproducible-faketools
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Fake system tools for reproducible builds
 License:        MIT
@@ -63,6 +63,14 @@ a script to enhance the reproducibility of the output of date
 %defattr(-, root, root, 0755)
 /usr/local/bin/date
 
+%package find
+Summary:  replacement find
+Requires: reproducible-faketools
+%description find
+a script to enhance the reproducibility of the output of find
+%files find
+%defattr(-, root, root, 0755)
+/usr/local/bin/find
 
 %package ar
 Summary:  replacement ar

@@ -1,0 +1,9 @@
+#!/bin/bash
+. $(dirname $0)/../lib/reproducible-faketools-lib
+sortparm=
+for arg in "$@" ; do
+    [[ "$arg" = "-print0" ]] && sortparm=-z
+done
+faketoolnotice
+exec $orig "$@" |
+    sort $sortparm
