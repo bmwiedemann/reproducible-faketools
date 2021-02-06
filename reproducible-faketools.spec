@@ -183,6 +183,20 @@ by replacing time(2) and fstat(2) library calls to return our notion of time
 %defattr(-, root, root, 0755)
 /usr/local/bin/rpmbuild-faketime
 
+%package dettrace
+Summary:  use dettrace to normalize env
+RemovePathPostfixes: -dettrace
+Requires: dettrace
+Requires: reproducible-faketools
+Conflicts: reproducible-faketools-faketime
+Conflicts: reproducible-faketools-strace
+%description dettrace
+a script to enhance the reproducibility of the output
+by ptraceing in a container
+%files dettrace
+%defattr(-, root, root, 0755)
+/usr/local/bin/rpmbuild-dettrace
+
 %package strace
 Summary:  run build with strace
 RemovePathPostfixes: -strace
