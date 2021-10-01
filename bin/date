@@ -13,5 +13,5 @@ for arg in "$@" ; do
         exec $orig "$@"
     fi
 done
-faketoolnotice
+faketoolnotice "$@"
 exec $orig --utc -d "@${SOURCE_DATE_EPOCH}" "$@"

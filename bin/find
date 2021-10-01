@@ -4,6 +4,6 @@ sortparm=
 for arg in "$@" ; do
     [[ "$arg" = "-print0" ]] && sortparm=-z
 done
-faketoolnotice
+faketoolnotice "$@"
 exec $orig "$@" |
     sort $sortparm

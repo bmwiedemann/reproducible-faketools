@@ -1,4 +1,4 @@
 #!/bin/sh
 . $(dirname $0)/../lib/reproducible-faketools-lib
-faketoolnotice
+faketoolnotice "$@"
 exec $orig -D "$@"

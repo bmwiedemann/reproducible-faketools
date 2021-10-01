@@ -4,6 +4,6 @@ ANT_ARGS+=" -Dant.tstamp.now=$SOURCE_DATE_EPOCH"
 export ANT_ARGS
 $orig "$@"
 if [ -e /usr/bin/strip-nondeterminism ] ; then
-    faketoolnotice
+    faketoolnotice "$@"
     strip-all-nondeterminism || :
 fi

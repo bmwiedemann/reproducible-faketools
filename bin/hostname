@@ -1,5 +1,5 @@
 #!/bin/sh
 . $(dirname $0)/../lib/reproducible-faketools-lib
 [ "$*" != "" ] && [ "$*" != "-f" ] && exec $orig "$@"
-faketoolnotice
+faketoolnotice "$@"
 echo reproducible

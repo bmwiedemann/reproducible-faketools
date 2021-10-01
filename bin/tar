@@ -1,6 +1,6 @@
 #!/bin/sh
 . $(dirname $0)/../lib/reproducible-faketools-lib
-faketoolnotice
+faketoolnotice "$@"
 rbopts="--sort=name --clamp-mtime --mtime @$SOURCE_DATE_EPOCH"
 echo "$@" | grep -q -- --pax-option || rbopts="$rbopts --format=gnu"
 exec $orig "$@" $rbopts
