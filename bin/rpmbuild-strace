@@ -1,6 +1,6 @@
 #!/bin/sh
 exec strace -q -s 400 -f \
-    -e open,openat,rename,renameat,renameat2,link,linkat,symlink,symlinkat\
+    -e file,open,openat,rename,renameat,renameat2,link,linkat,symlink,symlinkat\
 ,chdir,fchdir,execve\
 ,clone,clone3,fork,vfork,uname \
     /usr/bin/rpmbuild "$@"
