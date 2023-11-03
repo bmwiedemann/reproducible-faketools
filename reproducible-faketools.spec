@@ -41,7 +41,7 @@ is set but just redirect to the normal version otherwise.
 echo dummy file because an rpm cannot be empty > README.random
 
 %install
-%makeinstall
+%make_install
 
 %package hostname
 Summary:  replacement hostname
