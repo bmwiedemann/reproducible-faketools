@@ -195,6 +195,20 @@ by running rpmbuild with strace to find how files are created
 %defattr(-, root, root, 0755)
 /usr/local/bin/rpmbuild-strace
 
+%package j1
+Summary:  run build with single-thread
+RemovePathPostfixes: -j1
+Requires: util-linux
+Conflicts: reproducible-faketools-faketime
+Conflicts: reproducible-faketools-dettrace
+Conflicts: reproducible-faketools-strace
+%description j1
+a script to facilitate the debugging of reproducibility issues
+by running rpmbuild with taskset 1 to reduce parallelism
+%files j1
+%defattr(-, root, root, 0755)
+/usr/local/bin/rpmbuild-j1
+
 %files
 %defattr(-, root, root, 0755)
 %license LICENSE.md
