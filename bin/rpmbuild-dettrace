@@ -1,4 +1,0 @@
-#!/bin/sh
-. $(dirname $0)/../lib/reproducible-faketools/lib
-faketoolnotice dettrace
-exec dettrace "$orig" "$@"

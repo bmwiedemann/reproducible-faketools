@@ -1,3 +1,0 @@
-#!/bin/sh
-exec taskset 1 \
-    /usr/bin/rpmbuild "$@"

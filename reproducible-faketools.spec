@@ -171,62 +171,96 @@ by replacing it with a wrapper to 7z
 /usr/local/bin/zip
 /usr/local/bin/reproducible-zip.pl
 
+%package rpmbuild
+Summary:  wrapper to include various other faketools
+Requires: reproducible-faketools
+%description rpmbuild
+This is a wrapper script that runs scripts from
+/usr/local/lib/reproducible-faketools/rpmbuild.d/
+%files rpmbuild
+%defattr(-, root, root, 0755)
+/usr/local/bin/rpmbuild
+%dir /usr/local/lib/reproducible-faketools/rpmbuild.d
+
 %package faketime
 Summary:  fake time via LD_PRELOAD
-RemovePathPostfixes: -faketime
 Requires: libfaketime
-Requires: reproducible-faketools
+Requires: reproducible-faketools-rpmbuild
 %description faketime
 a script to enhance the reproducibility of the output
 by replacing time(2) and fstat(2) library calls to return our notion of time
 %files faketime
 %defattr(-, root, root, 0755)
-/usr/local/bin/rpmbuild-faketime
+/usr/local/lib/reproducible-faketools/rpmbuild.d/60-faketime.sh
 
 %package dettrace
 Summary:  use dettrace to normalize env
-RemovePathPostfixes: -dettrace
 Requires: dettrace
-Requires: reproducible-faketools
-Conflicts: reproducible-faketools-faketime
-Conflicts: reproducible-faketools-strace
+Requires: reproducible-faketools-rpmbuild
 %description dettrace
 a script to enhance the reproducibility of the output
 by ptraceing in a container
 %files dettrace
 %defattr(-, root, root, 0755)
-/usr/local/bin/rpmbuild-dettrace
+/usr/local/lib/reproducible-faketools/rpmbuild.d/50-dettrace.sh
 
 %package strace
 Summary:  run build with strace
-RemovePathPostfixes: -strace
 Requires: strace
-Conflicts: reproducible-faketools-faketime
+Requires: reproducible-faketools-rpmbuild
 %description strace
 a script to facilitate the debugging of reproducibility issues
 by running rpmbuild with strace to find how files are created
 %files strace
 %defattr(-, root, root, 0755)
-/usr/local/bin/rpmbuild-strace
+/usr/local/lib/reproducible-faketools/rpmbuild.d/55-strace.sh
 
 %package j1
 Summary:  run build with single-thread
-RemovePathPostfixes: -j1
 Requires: util-linux
-Conflicts: reproducible-faketools-faketime
-Conflicts: reproducible-faketools-dettrace
-Conflicts: reproducible-faketools-strace
+Requires: reproducible-faketools-rpmbuild
 %description j1
 a script to facilitate the debugging of reproducibility issues
 by running rpmbuild with taskset 1 to reduce parallelism
 %files j1
 %defattr(-, root, root, 0755)
-/usr/local/bin/rpmbuild-j1
+/usr/local/lib/reproducible-faketools/rpmbuild.d/60-j1.sh
+
+%package verbose
+Summary:  run faketools in verbose mode
+Requires: reproducible-faketools-rpmbuild
+%description verbose
+prints various notice messages from faketools - useful for debugging
+warning: can confuse some test frameworks
+%files verbose
+%defattr(-, root, root, 0755)
+/usr/local/lib/reproducible-faketools/rpmbuild.d/03-verbose.sh
+
+%package future1y
+Summary:  Run build with the timestamp set to 1y in the future
+Requires: reproducible-faketools-future
+%description future1y
+Run the build with the timestamp set to 1y in the future
+%files future1y
+%defattr(-, root, root, 0755)
+/usr/local/lib/reproducible-faketools/rpmbuild.d/80-future1y.sh
+
+%package future
+Summary:  Run build with the timestamp set to 16y in the future
+Requires: reproducible-faketools-rpmbuild
+%description future
+Run the build with the timestamp set to 16y in the future
+(overridable default)
+%files future
+%defattr(-, root, root, 0755)
+/usr/local/lib/reproducible-faketools/rpmbuild.d/81-future.sh
+
 
 %files
 %defattr(-, root, root, 0755)
 %license LICENSE.md
 %doc README.md
-/usr/local/lib/%{name}*
+%dir /usr/local/lib/%{name}
+/usr/local/lib/%{name}/lib
 
 %changelog

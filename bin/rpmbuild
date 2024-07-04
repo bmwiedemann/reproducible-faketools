@@ -1,0 +1,11 @@
+#!/bin/bash
+: ${SOURCE_DATE_EPOCH:=1720079000}
+: ${wrapperdir:=/usr/local/lib/reproducible-faketools/rpmbuild.d}
+. $(dirname $0)/../lib/reproducible-faketools/lib
+declare -a wrapper=()
+shopt -s nullglob
+for w in $wrapperdir/* ; do
+    faketoolnotice "using $w"
+    . $w
+done
+exec "${wrapper[@]}" /usr/bin/rpmbuild "$@"
