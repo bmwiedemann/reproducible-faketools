@@ -1,5 +1,5 @@
 #!/bin/sh
-. $(dirname $0)/../lib/reproducible-faketools-lib
+. $(dirname $0)/../lib/reproducible-faketools/lib
 [ "$1" != "-r" ] && exec $orig "$@"
 faketoolnotice "$@"
 exec $orig -D "$@"

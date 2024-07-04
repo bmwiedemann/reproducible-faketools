@@ -1,5 +1,5 @@
 #!/bin/sh
-. $(dirname $0)/../lib/reproducible-faketools-lib
+. $(dirname $0)/../lib/reproducible-faketools/lib
 ANT_ARGS+=" -Dant.tstamp.now=$SOURCE_DATE_EPOCH"
 export ANT_ARGS
 $orig "$@"
