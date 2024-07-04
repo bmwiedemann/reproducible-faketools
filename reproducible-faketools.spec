@@ -226,6 +226,15 @@ by running rpmbuild with taskset 1 to reduce parallelism
 %defattr(-, root, root, 0755)
 /usr/local/lib/reproducible-faketools/rpmbuild.d/60-j1.sh
 
+%package aslr2
+Summary:  run build without aslr
+Requires: reproducible-faketools-rpmbuild
+%description aslr2
+Run the build without aslr. Does not require root permissions.
+%files aslr2
+%defattr(-, root, root, 0755)
+/usr/local/lib/reproducible-faketools/rpmbuild.d/40-aslr.sh
+
 %package verbose
 Summary:  run faketools in verbose mode
 Requires: reproducible-faketools-rpmbuild
