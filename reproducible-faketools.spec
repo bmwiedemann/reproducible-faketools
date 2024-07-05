@@ -264,6 +264,19 @@ Run the build with the timestamp set to 16y in the future
 %defattr(-, root, root, 0755)
 /usr/local/lib/reproducible-faketools/rpmbuild.d/81-future.sh
 
+%package futurepost
+Summary:  Run build in the future
+Requires: this-is-only-for-build-envs
+%description futurepost
+Uses post script to modify the build system date,
+so that it works when rpmbuild runs as non-root (default).
+Needs osc build --clean
+Warning: Only install in scratch-VMs as it will change the system clock.
+%post futurepost
+now=$(date +%%s)
+date --set @$((now + 34694220))
+%files futurepost
+%ghost /var/log/futurepost
 
 %files
 %defattr(-, root, root, 0755)
