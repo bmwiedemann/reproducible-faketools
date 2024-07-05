@@ -23,7 +23,7 @@ Summary:        Fake system tools for reproducible builds
 License:        MIT
 Group:          Development/Tools/Other
 Url:            https://github.com/bmwiedemann/reproducible-faketools
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar
 Requires:       hostname
 Requires:       coreutils
 BuildArch:      noarch
