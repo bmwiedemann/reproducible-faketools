@@ -3,7 +3,7 @@
     <param name="url">https://github.com/bmwiedemann/reproducible-faketools.git</param>
     <param name="scm">git</param>
     <param name="revision">devel</param>
-    <param name="version">0.4.2</param>
+    <param name="version">0.5.0</param>
     <param name="extract">reproducible-faketools.spec</param>
     <param name="extract">_service</param>
   </service>

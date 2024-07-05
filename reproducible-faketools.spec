@@ -17,7 +17,7 @@
 
 
 Name:           reproducible-faketools
-Version:        0.4.2
+Version:        0.5.0
 Release:        0
 Summary:        Fake system tools for reproducible builds
 License:        MIT
