@@ -24,8 +24,9 @@ License:        MIT
 Group:          Development/Tools/Other
 URL:            https://github.com/bmwiedemann/reproducible-faketools
 Source0:        %{name}-%{version}.tar
+Requires:       bash
 Requires:       coreutils
-Requires:       hostname
+Requires:       this-is-only-for-build-envs
 BuildArch:      noarch
 
 %description
@@ -45,6 +46,7 @@ echo dummy file because an rpm cannot be empty > README.random
 
 %package hostname
 Summary:        replacement hostname
+Requires:       hostname
 Requires:       reproducible-faketools
 %description hostname
 a script to enhance the reproducibility of the output of hostname
@@ -106,6 +108,7 @@ a script to enhance the reproducibility of the output of ant
 %package filesys
 Summary:        sorted filesystem
 Requires:       disorderfs
+Requires:       reproducible-faketools
 %description filesys
 a script to make sure readdir on filesystems is always sorted during build
 WARNING: do not use outside OBS or osc build --vm-type=kvm
@@ -129,6 +132,7 @@ to enhance the reproducibility of some packages
 %package aslr
 Summary:        disable address space layout randomization
 Requires(post): procps
+Requires:       reproducible-faketools
 %description aslr
 disable address space layout randomization
 to test if programs that use memory pointers like edje_cc
@@ -143,6 +147,7 @@ sysctl -w kernel.randomize_va_space=2
 
 %package random
 Summary:        reduce sources of explicit randomness
+Requires:       reproducible-faketools
 %description random
 reduce sources of explicit randomness
 by replacing /dev/random and urandom
@@ -265,7 +270,7 @@ Run the build with the timestamp set to 16y in the future
 
 %package futurepost
 Summary:        Run build in the future
-Requires:       this-is-only-for-build-envs
+Requires:       reproducible-faketools
 %description futurepost
 Uses post script to modify the build system date,
 so that it works when rpmbuild runs as non-root (default).
