@@ -1,7 +1,7 @@
 #
 # spec file for package reproducible-faketools
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,10 +22,10 @@ Release:        0
 Summary:        Fake system tools for reproducible builds
 License:        MIT
 Group:          Development/Tools/Other
-Url:            https://github.com/bmwiedemann/reproducible-faketools
+URL:            https://github.com/bmwiedemann/reproducible-faketools
 Source0:        %{name}-%{version}.tar
-Requires:       hostname
 Requires:       coreutils
+Requires:       hostname
 BuildArch:      noarch
 
 %description
@@ -44,8 +44,8 @@ echo dummy file because an rpm cannot be empty > README.random
 %make_install
 
 %package hostname
-Summary:  replacement hostname
-Requires: reproducible-faketools
+Summary:        replacement hostname
+Requires:       reproducible-faketools
 %description hostname
 a script to enhance the reproducibility of the output of hostname
 %files hostname
@@ -53,10 +53,9 @@ a script to enhance the reproducibility of the output of hostname
 /usr/local/bin/hostname
 /usr/local/bin/uname
 
-
 %package date
-Summary:  replacement date
-Requires: reproducible-faketools
+Summary:        replacement date
+Requires:       reproducible-faketools
 %description date
 a script to enhance the reproducibility of the output of date
 %files date
@@ -64,8 +63,8 @@ a script to enhance the reproducibility of the output of date
 /usr/local/bin/date
 
 %package find
-Summary:  replacement find
-Requires: reproducible-faketools
+Summary:        replacement find
+Requires:       reproducible-faketools
 %description find
 a script to enhance the reproducibility of the output of find
 %files find
@@ -73,8 +72,8 @@ a script to enhance the reproducibility of the output of find
 /usr/local/bin/find
 
 %package ar
-Summary:  replacement ar
-Requires: reproducible-faketools
+Summary:        replacement ar
+Requires:       reproducible-faketools
 %description ar
 a script to enhance the reproducibility of the output of ar
 %files ar
@@ -83,9 +82,9 @@ a script to enhance the reproducibility of the output of ar
 /usr/local/bin/strip
 
 %package tar
-Summary:  replacement tar
-Requires: reproducible-faketools
-Requires: tar >= 1.28
+Summary:        replacement tar
+Requires:       reproducible-faketools
+Requires:       tar >= 1.28
 %description tar
 a script to enhance the reproducibility of the output of tar
 by adding --sort and --mtime options
@@ -95,9 +94,9 @@ by adding --sort and --mtime options
 /usr/local/bin/tar
 
 %package ant
-Summary:  replacement ant
-Requires: reproducible-faketools
-Requires: strip-nondeterminism
+Summary:        replacement ant
+Requires:       reproducible-faketools
+Requires:       strip-nondeterminism
 %description ant
 a script to enhance the reproducibility of the output of ant
 %files ant
@@ -105,8 +104,8 @@ a script to enhance the reproducibility of the output of ant
 /usr/local/bin/ant
 
 %package filesys
-Summary:  sorted filesystem
-Requires: disorderfs
+Summary:        sorted filesystem
+Requires:       disorderfs
 %description filesys
 a script to make sure readdir on filesystems is always sorted during build
 WARNING: do not use outside OBS or osc build --vm-type=kvm
@@ -118,8 +117,8 @@ chmod 4755 /usr/bin/fusermount || :
 mknod /dev/fuse c 10 229 || :
 
 %package pid
-Summary:  use fixed pid
-Requires: reproducible-faketools
+Summary:        use fixed pid
+Requires:       reproducible-faketools
 %description pid
 a script to wrap su to start a build with a fixed process id
 to enhance the reproducibility of some packages
@@ -128,7 +127,7 @@ to enhance the reproducibility of some packages
 /usr/local/bin/su
 
 %package aslr
-Summary:  disable address space layout randomization
+Summary:        disable address space layout randomization
 Requires(post): procps
 %description aslr
 disable address space layout randomization
@@ -143,7 +142,7 @@ sysctl --system
 sysctl -w kernel.randomize_va_space=2
 
 %package random
-Summary:  reduce sources of explicit randomness
+Summary:        reduce sources of explicit randomness
 %description random
 reduce sources of explicit randomness
 by replacing /dev/random and urandom
@@ -159,10 +158,10 @@ mknod /dev/random c 1 8
 mknod /dev/urandom c 1 9
 
 %package zip
-Summary:  replacement zip
-Requires: p7zip
-Requires: perl
-Requires: reproducible-faketools
+Summary:        replacement zip
+Requires:       p7zip
+Requires:       perl
+Requires:       reproducible-faketools
 %description zip
 a script to enhance the reproducibility of the output of zip
 by replacing it with a wrapper to 7z
@@ -172,8 +171,8 @@ by replacing it with a wrapper to 7z
 /usr/local/bin/reproducible-zip.pl
 
 %package rpmbuild
-Summary:  wrapper to include various other faketools
-Requires: reproducible-faketools
+Summary:        wrapper to include various other faketools
+Requires:       reproducible-faketools
 %description rpmbuild
 This is a wrapper script that runs scripts from
 /usr/local/lib/reproducible-faketools/rpmbuild.d/
@@ -183,9 +182,9 @@ This is a wrapper script that runs scripts from
 %dir /usr/local/lib/reproducible-faketools/rpmbuild.d
 
 %package faketime
-Summary:  fake time via LD_PRELOAD
-Requires: libfaketime
-Requires: reproducible-faketools-rpmbuild
+Summary:        fake time via LD_PRELOAD
+Requires:       libfaketime
+Requires:       reproducible-faketools-rpmbuild
 %description faketime
 a script to enhance the reproducibility of the output
 by replacing time(2) and fstat(2) library calls to return our notion of time
@@ -194,9 +193,9 @@ by replacing time(2) and fstat(2) library calls to return our notion of time
 /usr/local/lib/reproducible-faketools/rpmbuild.d/60-faketime.sh
 
 %package dettrace
-Summary:  use dettrace to normalize env
-Requires: dettrace
-Requires: reproducible-faketools-rpmbuild
+Summary:        use dettrace to normalize env
+Requires:       dettrace
+Requires:       reproducible-faketools-rpmbuild
 %description dettrace
 a script to enhance the reproducibility of the output
 by ptraceing in a container
@@ -205,9 +204,9 @@ by ptraceing in a container
 /usr/local/lib/reproducible-faketools/rpmbuild.d/50-dettrace.sh
 
 %package strace
-Summary:  run build with strace
-Requires: strace
-Requires: reproducible-faketools-rpmbuild
+Summary:        run build with strace
+Requires:       reproducible-faketools-rpmbuild
+Requires:       strace
 %description strace
 a script to facilitate the debugging of reproducibility issues
 by running rpmbuild with strace to find how files are created
@@ -216,9 +215,9 @@ by running rpmbuild with strace to find how files are created
 /usr/local/lib/reproducible-faketools/rpmbuild.d/55-strace.sh
 
 %package j1
-Summary:  run build with single-thread
-Requires: util-linux
-Requires: reproducible-faketools-rpmbuild
+Summary:        run build with single-thread
+Requires:       reproducible-faketools-rpmbuild
+Requires:       util-linux
 %description j1
 a script to facilitate the debugging of reproducibility issues
 by running rpmbuild with taskset 1 to reduce parallelism
@@ -227,8 +226,8 @@ by running rpmbuild with taskset 1 to reduce parallelism
 /usr/local/lib/reproducible-faketools/rpmbuild.d/60-j1.sh
 
 %package aslr2
-Summary:  run build without aslr
-Requires: reproducible-faketools-rpmbuild
+Summary:        run build without aslr
+Requires:       reproducible-faketools-rpmbuild
 %description aslr2
 Run the build without aslr. Does not require root permissions.
 %files aslr2
@@ -236,8 +235,8 @@ Run the build without aslr. Does not require root permissions.
 /usr/local/lib/reproducible-faketools/rpmbuild.d/40-aslr.sh
 
 %package verbose
-Summary:  run faketools in verbose mode
-Requires: reproducible-faketools-rpmbuild
+Summary:        run faketools in verbose mode
+Requires:       reproducible-faketools-rpmbuild
 %description verbose
 prints various notice messages from faketools - useful for debugging
 warning: can confuse some test frameworks
@@ -246,8 +245,8 @@ warning: can confuse some test frameworks
 /usr/local/lib/reproducible-faketools/rpmbuild.d/03-verbose.sh
 
 %package future1y
-Summary:  Run build with the timestamp set to 1y in the future
-Requires: reproducible-faketools-future
+Summary:        Run build with the timestamp set to 1y in the future
+Requires:       reproducible-faketools-future
 %description future1y
 Run the build with the timestamp set to 1y in the future
 %files future1y
@@ -255,8 +254,8 @@ Run the build with the timestamp set to 1y in the future
 /usr/local/lib/reproducible-faketools/rpmbuild.d/80-future1y.sh
 
 %package future
-Summary:  Run build with the timestamp set to 16y in the future
-Requires: reproducible-faketools-rpmbuild
+Summary:        Run build with the timestamp set to 16y in the future
+Requires:       reproducible-faketools-rpmbuild
 %description future
 Run the build with the timestamp set to 16y in the future
 (overridable default)
@@ -265,8 +264,8 @@ Run the build with the timestamp set to 16y in the future
 /usr/local/lib/reproducible-faketools/rpmbuild.d/81-future.sh
 
 %package futurepost
-Summary:  Run build in the future
-Requires: this-is-only-for-build-envs
+Summary:        Run build in the future
+Requires:       this-is-only-for-build-envs
 %description futurepost
 Uses post script to modify the build system date,
 so that it works when rpmbuild runs as non-root (default).
