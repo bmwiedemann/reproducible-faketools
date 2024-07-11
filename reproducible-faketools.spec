@@ -183,7 +183,11 @@ by replacing time(2) and fstat(2) library calls to return our notion of time
 
 %package dettrace
 Summary:        use dettrace to normalize env
+%if 0%{?withdettrace}
 Requires:       dettrace
+%else
+Recommends:     dettrace
+%endif
 Requires:       reproducible-faketools-rpmbuild
 %description dettrace
 a script to enhance the reproducibility of the output
