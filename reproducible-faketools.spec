@@ -129,22 +129,6 @@ to enhance the reproducibility of some packages
 %defattr(-, root, root, 0755)
 /usr/local/bin/su
 
-%package aslr
-Summary:        disable address space layout randomization
-Requires(post): procps
-Requires:       reproducible-faketools
-%description aslr
-disable address space layout randomization
-to test if programs that use memory pointers like edje_cc
-work more reproducibly under these conditions
-%files aslr
-%defattr(-, root, root, 0644)
-/etc/sysctl.d/01-disable-aslr.conf
-%post aslr
-sysctl --system
-%postun aslr
-sysctl -w kernel.randomize_va_space=2
-
 %package random
 Summary:        reduce sources of explicit randomness
 Requires:       reproducible-faketools
@@ -230,12 +214,12 @@ by running rpmbuild with taskset 1 to reduce parallelism
 %defattr(-, root, root, 0755)
 /usr/local/lib/reproducible-faketools/rpmbuild.d/60-j1.sh
 
-%package aslr2
+%package aslr
 Summary:        run build without aslr
 Requires:       reproducible-faketools-rpmbuild
-%description aslr2
+%description aslr
 Run the build without aslr. Does not require root permissions.
-%files aslr2
+%files aslr
 %defattr(-, root, root, 0755)
 /usr/local/lib/reproducible-faketools/rpmbuild.d/40-aslr.sh
 
