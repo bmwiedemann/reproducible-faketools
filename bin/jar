@@ -1,0 +1,17 @@
+#!/bin/bash
+. $(dirname $0)/../lib/reproducible-faketools/lib
+if [[ $SOURCE_DATE_EPOCH -lt 315532802 ]] ; then
+    SOURCE_DATE_EPOCH=315532802
+fi
+d=$(date -u -Iseconds -d "@${SOURCE_DATE_EPOCH}")
+for arg in "$@" ; do
+    if  [[ $arg =~ ^-c ]] ||\
+        [[ $arg =~ ^--create ]] ||\
+        [[ $arg =~ ^-u ]] ||\
+        [[ $arg =~ ^--update ]]
+        then
+            faketoolnotice "$@"
+            exec $orig --date="$d" "$@"
+    fi
+done
+exec $orig "$@"

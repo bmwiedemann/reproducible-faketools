@@ -159,6 +159,17 @@ by replacing it with a wrapper to 7z
 /usr/local/bin/zip
 /usr/local/bin/reproducible-zip.pl
 
+%package jar
+Summary:        replacement jar
+Requires:       java-devel
+Requires:       reproducible-faketools
+%description jar
+a script to enhance the reproducibility of the output of jar
+by normalizing mtimes via the --date= option
+%files jar
+%defattr(-, root, root, 0755)
+/usr/local/bin/jar
+
 %package rpmbuild
 Summary:        wrapper to include various other faketools
 Requires:       reproducible-faketools
