@@ -44,6 +44,9 @@ echo dummy file because an rpm cannot be empty > README.random
 %install
 %make_install
 
+%check
+make test
+
 %package hostname
 Summary:        replacement hostname
 Requires:       hostname

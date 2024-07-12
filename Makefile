@@ -8,5 +8,5 @@ install:
 roundup:
 	git clone https://github.com/SUSE-Cloud/roundup
 
-test: roundup
-	cd tests && ../roundup/roundup.sh
+test:
+	cd tests && ./roundup.sh
