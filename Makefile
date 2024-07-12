@@ -9,4 +9,4 @@ roundup:
 	git clone https://github.com/SUSE-Cloud/roundup
 
 test:
-	cd tests && ./roundup.sh
+	make -C tests
