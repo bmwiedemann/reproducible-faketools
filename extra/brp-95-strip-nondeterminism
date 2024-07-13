@@ -1,0 +1,2 @@
+#!/bin/sh -x
+[ -e /usr/bin/strip-nondeterminism ] && find $RPM_BUILD_ROOT -type f -print0 | xargs -r -0 --no-run-if-empty strip-nondeterminism --timestamp=${SOURCE_DATE_EPOCH:-1720800000} --clamp-timestamp

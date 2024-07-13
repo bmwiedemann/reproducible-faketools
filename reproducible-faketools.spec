@@ -117,7 +117,7 @@ enhance the reproducibility of various file formats
 with strip-nondeterminism
 %files strip-nondeterminism
 %defattr(-, root, root, 0644)
-/usr/lib/rpm/macros.d/macros.rbft-strip-nondeterminism
+/usr/lib/rpm/brp-suse.d/brp-95-strip-nondeterminism
 
 %package filesys
 Summary:        sorted filesystem
