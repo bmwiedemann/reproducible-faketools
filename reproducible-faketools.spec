@@ -17,7 +17,7 @@
 
 
 Name:           reproducible-faketools
-Version:        0.5.0
+Version:        set-by-service-from-git-tag
 Release:        0
 Summary:        Fake system tools for reproducible builds
 License:        MIT
