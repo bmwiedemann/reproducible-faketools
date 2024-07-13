@@ -108,6 +108,17 @@ a script to enhance the reproducibility of the output of ant
 %defattr(-, root, root, 0755)
 /usr/local/bin/ant
 
+%package strip-nondeterminism
+Summary:        Run strip-nondeterminism after build
+Requires:       reproducible-faketools
+Requires:       strip-nondeterminism
+%description strip-nondeterminism
+enhance the reproducibility of various file formats
+with strip-nondeterminism
+%files strip-nondeterminism
+%defattr(-, root, root, 0644)
+/usr/lib/rpm/macros.d/macros.rbft-strip-nondeterminism
+
 %package filesys
 Summary:        sorted filesystem
 Requires:       disorderfs

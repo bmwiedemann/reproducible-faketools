@@ -1,0 +1,2 @@
+%__spec_build_post   [ -e /usr/bin/strip-nondeterminism ] && find .          -type f -print0 | xargs -0 --no-run-if-empty strip-nondeterminism --timestamp=${SOURCE_DATE_EPOCH:-1720800000} --clamp-timestamp || true ; exit 0
+%__spec_install_post [ -e /usr/bin/strip-nondeterminism ] && find %buildroot -type f -print0 | xargs -0 --no-run-if-empty strip-nondeterminism --timestamp=${SOURCE_DATE_EPOCH:-1720800000} --clamp-timestamp ; %__os_install_post'
