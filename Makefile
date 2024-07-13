@@ -1,4 +1,7 @@
 PREFIX:=/usr/local
+all: build
+build:
+	echo "nothing to build here"
 install:
 	install -d $(DESTDIR)$(PREFIX)/bin/ $(DESTDIR)$(PREFIX)/lib/ $(DESTDIR)/etc/profile.d/
 	install -p -m 755 bin/* $(DESTDIR)$(PREFIX)/bin/
