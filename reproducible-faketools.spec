@@ -39,10 +39,11 @@ is set but just redirect to the normal version otherwise.
 %setup
 
 %build
+make
 echo dummy file because an rpm cannot be empty > README.random
 
 %install
-%make_install
+%make_install LIBDIR=%{_libdir}
 
 %check
 make test
