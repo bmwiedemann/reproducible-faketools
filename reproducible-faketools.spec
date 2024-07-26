@@ -27,7 +27,7 @@ Source0:        %{name}-%{version}.tar
 Requires:       bash
 Requires:       coreutils
 Requires:       this-is-only-for-build-envs
-BuildArch:      noarch
+#BuildArch:      noarch
 
 %description
 These tools are meant to help with reproducible builds.
