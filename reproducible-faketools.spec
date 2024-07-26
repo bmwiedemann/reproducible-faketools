@@ -259,6 +259,17 @@ Run the build without aslr. Does not require root permissions.
 %defattr(-, root, root, 0755)
 /usr/local/lib/reproducible-faketools/rpmbuild.d/40-aslr.sh
 
+%package memcpy
+Summary:        replace memcpy with memmove
+Requires:       reproducible-faketools-rpmbuild
+%description memcpy
+use LD_PRELOAD to substitute some mis-usable C functions
+with safer variants
+%files memcpy
+%defattr(-, root, root, 0755)
+%{_libdir}/rbft*.so
+/usr/local/lib/reproducible-faketools/rpmbuild.d/41-memcpy.sh
+
 %package verbose
 Summary:        run faketools in verbose mode
 Requires:       reproducible-faketools-rpmbuild
