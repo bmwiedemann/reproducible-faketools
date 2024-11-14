@@ -1,1 +1,1 @@
-wrapper+=(dettrace)
+wrapper+=(dettrace -- )
