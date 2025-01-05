@@ -6,4 +6,4 @@ for arg in "$@" ; do
 done
 faketoolnotice "$@"
 exec $orig "$@" |
-    sort $sortparm
+    LC_ALL=C sort $sortparm
