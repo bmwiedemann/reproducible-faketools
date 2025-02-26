@@ -241,9 +241,11 @@ a script to facilitate the debugging of reproducibility issues
 by running rpmbuild with taskset 1 to reduce parallelism
 
 %post j1
-for f in /sys/devices/system/cpu/cpu*/online ; do
-   echo 0 > $f ||:
-done
+if grep -q -e "^VM_TYPE='kvm'" -e "^VM_TYPE='qemu'" /.build/build.data ; then
+    for f in /sys/devices/system/cpu/cpu*/online ; do
+        echo 0 > $f ||:
+    done
+fi
 
 %files j1
 /usr/local/lib/reproducible-faketools/rpmbuild.d/60-j1.sh
