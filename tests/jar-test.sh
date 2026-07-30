@@ -7,7 +7,7 @@ it_normalizes_mtime_on_create() {
    mkdir -p tmp
    echo foo > tmp/foo
    SOURCE_DATE_EPOCH=1 ../bin/jar --create --file tmp/test.jar tmp/foo
-   hash=$(md5sum tmp/test.jar | cut -d" " -f1)
+   hash=$(zipinfo -T  tmp/test.jar | sed -n 's/ 5[0-6] / 51 /; 3,5p' | md5sum | cut -d" " -f1)
    rm -rf tmp
-   [[ "$hash" = 5c9de655dea174b60f195771ce3094fa ]] || [[ "$hash" = 7eebf70ccec32147cd291da1b3acb041 ]]
+   [[ "$hash" = 0142cf4129848d42e3f08f35f8cd56fc ]]
 }
