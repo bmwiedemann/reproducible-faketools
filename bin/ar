@@ -1,5 +1,17 @@
 #!/bin/sh
 . $(dirname $0)/../lib/reproducible-faketools/lib
-[ "$1" != "-r" ] && exec $orig "$@"
-faketoolnotice "$@"
-exec $orig -D "$@"
+# The operation comes either as -r or as old-style key letters, and cc-rs
+# ("ar cq"), libtool ("ar cru") and cmake ("ar qc") all use the latter, so
+# matching only "-r" left almost every archive with real mtimes and uids in
+# its member headers. Only the insert operations write those, so only they
+# need -D. Long options must not be touched: ar parses "-D --version" as
+# key letters and fails.
+op=$1
+case "$op" in
+    --*) op= ;;
+    -*) op=${op#-} ;;
+esac
+case "$op" in
+    *[rq]*) faketoolnotice "$@" ; exec $orig -D "$@" ;;
+esac
+exec $orig "$@"
