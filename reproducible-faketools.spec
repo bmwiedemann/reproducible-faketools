@@ -217,6 +217,21 @@ by running rpmbuild with strace to find how files are created
 %files strace
 /usr/local/lib/reproducible-faketools/rpmbuild.d/55-strace.sh
 
+%package rustc
+Summary:        Fingerprint every crate rustc emits
+Requires:       reproducible-faketools-rpmbuild
+%description rustc
+a script to facilitate the debugging of reproducibility issues in rust
+by wrapping rustc to record the flags, the -C metadata value and a sha256
+of every artifact each crate produces, one file per crate.
+Diffing the logs of two builds names the first crate that differs, which
+is what autoprovenance does for packages built from C.
+The log is written to /home/abuild/rpmbuild/rustcwrap, overridable with
+$RUSTCWRAP_LOG.
+%files rustc
+/usr/local/lib/reproducible-faketools/rustcwrap
+/usr/local/lib/reproducible-faketools/rpmbuild.d/56-rustc.sh
+
 %package j1
 Summary:        Run build with single-thread
 Requires:       reproducible-faketools-rpmbuild
